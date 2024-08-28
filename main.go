@@ -4,14 +4,15 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strconv"
 	"time"
 )
 
 func main() {
-	dt := time.Now() 
+	dt :=strconv.Itoa(time.Now().Year())
 	// cd:=dt.Format("01-02-2006 15:04:05")
-    fmt.Println(dt.Format("01-02-2006 15:04:05")) 
-	apiUrl :=fmt.Sprint("https://api.openf1.org/v1/sessions?year=2024")
+  
+	apiUrl :=fmt.Sprintf("https://api.openf1.org/v1/sessions?year=%s", dt)
 	fmt.Println(apiUrl)
 	res, err:=http.Get(apiUrl)
 	if(err!=nil){
