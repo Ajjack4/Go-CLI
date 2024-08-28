@@ -4,10 +4,16 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
 )
 
 func main() {
-	res, err:=http.Get("https://api.openf1.org/v1/position?meeting_key=1217&driver_number=40&position<=3")
+	dt := time.Now() 
+	// cd:=dt.Format("01-02-2006 15:04:05")
+    fmt.Println(dt.Format("01-02-2006 15:04:05")) 
+	apiUrl :=fmt.Sprint("https://api.openf1.org/v1/sessions?year=2024")
+	fmt.Println(apiUrl)
+	res, err:=http.Get(apiUrl)
 	if(err!=nil){
 		panic(err)
 	}
@@ -20,4 +26,5 @@ func main() {
         panic(err)
     }
 	fmt.Println(string(body))
+	
  }
