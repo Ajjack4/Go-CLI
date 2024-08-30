@@ -47,5 +47,5 @@ func main() {
         panic(err)
     }
 	fmt.Println(schedule)
-	
+	// to maintain github strick ,if you are reading this get a life
  }
