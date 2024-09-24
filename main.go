@@ -5,29 +5,21 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"strconv"
-	"time"
 )
 
-type RaceSchedule struct {
-    Races []Race 
-}
+type RaceSchedule []Race 
+
 type Race struct {
-	name string `json:"country_name"`
-	date string `json:"date_start"`
+	Name string `json:"country_name"`
+	Date string `json:"date_start"`
 }
 
 func main() {
-	// currentDate := time.Now().Format("2006-01-02")
-	dt :=strconv.Itoa(time.Now().Year())
-	
-	
-	// fmt.Println(dt)
-	// fmt.Println(currentDate)
+
 	
    
-	apiUrl :=fmt.Sprintf("https://api.openf1.org/v1/sessions?session_name=Race&year=%s",dt)
-	// fmt.Println(apiUrl)
+	apiUrl :=("https://api.openf1.org/v1/sessions?session_name=Race&year=2024")
+
 	res, err:=http.Get(apiUrl)
 	if(err!=nil){
 		panic(err)
@@ -47,5 +39,5 @@ func main() {
         panic(err)
     }
 	fmt.Println(schedule)
-	// to maintain github strick ,if you are reading this get a life
+	
  }
