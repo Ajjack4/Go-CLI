@@ -18,7 +18,7 @@ func main() {
 
 	
    
-	apiUrl :=("https://api.openf1.org/v1/sessions?session_name=Race&year=2024")
+	apiUrl :=("https://api.openf1.org/v1/sessions?session_name=Race&date_start>=2023-09-01&date_end<=2023-09-30")
 
 	res, err:=http.Get(apiUrl)
 	if(err!=nil){
