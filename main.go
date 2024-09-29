@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"time"
+
+	"github.com/Ajjack4/Go-CLI/Api"
 )
 
 type RaceSchedule []Race 
@@ -15,11 +18,12 @@ type Race struct {
 }
 
 func main() {
-
+    currentTime:=time.Now()
+	formattedtime:=currentTime.Format("2006")
 	
-   
-	apiUrl :=("https://api.openf1.org/v1/sessions?session_name=Race&date_start>=2023-09-01&date_end<=2023-09-30")
-
+   Api.Apicall()
+	apiUrl :=fmt.Sprintf("https://api.openf1.org/v1/sessions?session_name=Race&year=%s",formattedtime)
+  
 	res, err:=http.Get(apiUrl)
 	if(err!=nil){
 		panic(err)
